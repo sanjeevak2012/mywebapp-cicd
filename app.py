@@ -30,3 +30,13 @@ metrics = PrometheusMetrics(app)  # expose /metrics automatically
 @app.route("/")
 def hello():
     return "Hello from MyWebApp running on Kubernetes!"
+
+from flask import Flask
+from prometheus_flask_exporter import PrometheusMetrics
+
+app = Flask(__name__)
+metrics = PrometheusMetrics(app)  # exposes /metrics
+
+@app.route('/')
+def hello():
+    return "Hello from MyWebApp on Kubernetes!"
